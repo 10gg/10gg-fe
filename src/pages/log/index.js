@@ -7,13 +7,50 @@ import {
   Button,
   Tabs,
   Modal,
-  List
+  List,
+  Table
 } from 'antd';
 import moment from 'moment';
 import {connect} from 'dva';
 import Panel from '../../components/panel'
 
 const {Header, Content, Footer} = Layout;
+
+const columns = [{
+  title: 'backoff_time',
+  dataIndex: 'backoff_time',
+  key: 'backoff_time',
+  width: 20
+}, {
+  title: 'cost_time',
+  dataIndex: 'cost_time',
+  key: 'cost_time',
+  width: 20
+}, {
+  title: 'hit',
+  dataIndex: 'hit',
+  key: 'hit',
+  width: 20
+}, {
+  title: 'process_keys',
+  dataIndex: 'process_keys',
+  key: 'process_keys',
+  width: 20
+}, {
+  title: 'process_time',
+  dataIndex: 'process_time',
+  key: 'process_time',
+  width: 20
+}, {
+  title: 'relative_logs',
+  dataIndex: 'relative_logs',
+  key: 'relative_logs',
+  width: 20
+}, {
+  title: 'rewrite',
+  dataIndex: 'rewrite',
+  key: 'rewrite'
+}]
 
 const TabPane = Tabs.TabPane
 
@@ -87,9 +124,11 @@ export default connect(({logs}) => logs)(function (props) {
               <Button
                 disabled={!isTiping}
                 onClick={() => Modal.info({
-                content: !tips ? '无' : tips.map(tip => <p>{tip}</p>),
+                  content: !tips ? '无' : ( 
+                    <Table dataSource={tips} columns={columns}/>
+                  ),
                 title: 'Tips',
-                width: "1000px"
+                width: "1200px"
               })}>Tips</Button>
             </Col>
           </Row>
