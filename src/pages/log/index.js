@@ -20,36 +20,37 @@ const columns = [{
   title: 'backoff_time',
   dataIndex: 'backoff_time',
   key: 'backoff_time',
-  width: 20
+  width: 40
 }, {
   title: 'cost_time',
   dataIndex: 'cost_time',
   key: 'cost_time',
-  width: 20
+  width: 40
 }, {
   title: 'hit',
   dataIndex: 'hit',
   key: 'hit',
-  width: 20
+  width: 40
 }, {
   title: 'process_keys',
   dataIndex: 'process_keys',
   key: 'process_keys',
-  width: 20
+  width: 40
 }, {
   title: 'process_time',
   dataIndex: 'process_time',
   key: 'process_time',
-  width: 20
+  width: 40
 }, {
   title: 'relative_logs',
   dataIndex: 'relative_logs',
   key: 'relative_logs',
-  width: 20
+  width: 40
 }, {
   title: 'rewrite',
   dataIndex: 'rewrite',
-  key: 'rewrite'
+  key: 'rewrite',
+  width: 120
 }]
 
 const TabPane = Tabs.TabPane
@@ -125,7 +126,7 @@ export default connect(({logs}) => logs)(function (props) {
                 disabled={!isTiping}
                 onClick={() => Modal.info({
                   content: !tips ? '无' : ( 
-                    <Table dataSource={tips} columns={columns}/>
+                    <Table size="small" dataSource={tips} columns={columns}/>
                   ),
                 title: 'Tips',
                 width: "1200px"
