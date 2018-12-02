@@ -37,7 +37,7 @@ export default {
             yield put({type: 'setPayload', payload: {isLoading: true}})
             let ring_time = yield select(({logs: {ring_time}}) => ring_time);
             let data = yield queryInfo({ring_time})
-            let {session_id, logs: {tidb, tikv, pd}} = data
+            let {session_id, logs: {tidb, tikv, pd}} = JSON.parse(data)
             yield put({type: 'setPayload', payload: {isLoading: false, session_id, tidb, tikv, pd}})
             yield put({type: 'getTip'})
         },

@@ -88,7 +88,8 @@ export default connect(({logs}) => logs)(function (props) {
                 disabled={!isTiping}
                 onClick={() => Modal.info({
                 content: !tips ? '无' : tips.map(tip => <p>{tip}</p>),
-                title: 'Tips'
+                title: 'Tips',
+                width: "1000px"
               })}>Tips</Button>
             </Col>
           </Row>
